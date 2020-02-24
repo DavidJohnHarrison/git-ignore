@@ -53,13 +53,13 @@ get_gitignore_file_from_url() {
 
 # ==== NO ARGUMENTS GIVEN ======================================================
 if [ "$1" = "" ]; then
-    echo "NO INPUT"
+    echo "No template(s) specified, no changes made."
 # ==============================================================================
 
 
 
 # ==== LIST ARGUMENT GIVEN =====================================================
-elif [ "$1" = "list" ]; then
+elif [ "$1" = "--list" -o "$1" = "-l" ]; then
     LIST="`get_type_list`"
     for i in $LIST; do
        echo -n "$i, "

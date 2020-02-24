@@ -1,0 +1,114 @@
+.\" Manpage for git-ignore
+.TH GIT-IGNORE 1
+.\"
+.\"
+.SH NAME
+git-ignore \- Easily add standard files to .gitignore
+.\"
+.\"
+.SH SYNOPSIS
+.B git ignore
+[\fB\-l\fR]
+[\fB\-\-list\fR]
+.IR [<templatelist>...]
+.\"
+.\"
+.SH DESCRIPTION
+.B git-ignore
+Creates/appends a set of templates to the .gitignore file in the current directory.
+It does this by downloading the .gitignore template using the https://gitignore.io API.
+As such, all operations require a working internet connection.
+.PP
+Note that this won't overwrite the current .gitignore file.
+If a .gitignore file already exists in the current directory, it will append to it.
+.\"
+.\"
+.SH OPTIONS
+.TP
+.BR \-l ", " \-\-list
+If given, will list the available templates. Note this must come before any templates,
+and any templates specified will be ignored.
+.TP
+.BR <templatelist>...
+Template(s) to download and append to the local .gitignore file.
+Multiple templates can be specified by separating each one with a space or comma.
+.\"
+.\"
+.SH EXAMPLES
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+List all available templates:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ git ignore -l
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+Add a .gitignore file to a C++ project:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ git ignore c++
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.sp -1
+.IP \(bu 2.3
+.\}
+Add a .gitignore file to a C/C++ project on macOS (i.e. ignore system files):
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ git ignore c c++ macos
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Note templates can also be given comma-separated (with or without space):
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ git ignore c, c++, macos
+.RE
+.\"
+.\"
+.SH AUTHOR
+Written by David John Harrison (https://david.harrison.sh).
