@@ -2,6 +2,7 @@
 BASE_URL="https://gitignore.io/api/"
 LIST_SLUG="list/"
 
+CACHE_DIR="$HOME/.cache/git-ignore"
 
 
 # ==== HELPER FUNCTIONS ========================================================
@@ -13,6 +14,8 @@ get_type_list() {
     fi
 
     LIST=$(printf '%s' "$LIST" | tr '\n' ' ' | tr ',' ' ')
+    mkdir -p "$CACHE_DIR"
+    echo "$LIST" > "$CACHE_DIR/templates"
     echo "$LIST"
 }
 

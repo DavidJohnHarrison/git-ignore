@@ -4,6 +4,7 @@ makefile_dir := $(dir $(makefile_path))
 install_prefix := "/usr/local"
 install_script_dir := "$(install_prefix)/bin/"
 install_man_dir := "$(install_prefix)/share/man/man1"
+autocomplete_dir := "/etc/bash_completion.d"
 
 
 # Installs the git command. Requires superuser privileges.
@@ -11,6 +12,7 @@ install:
 	cp ./src/git-ignore.sh $(install_script_dir)/git-ignore
 	mkdir -p $(install_man_dir)
 	cp ./man/git-ignore.1 $(install_man_dir)
+	-cp ./src/git-ignore.completion.sh $(autocomplete_dir)/git-ignore
 
 
 # Installs by symlinking the development file in this repo instead of copying.
@@ -20,6 +22,7 @@ dev-install:
 	ln -s $(makefile_dir)/src/git-ignore.sh $(install_script_dir)/git-ignore
 	mkdir -p $(install_man_dir)
 	ln -s $(makefile_dir)/man/git-ignore.1 $(install_man_dir)/git-ignore.1
+	-ln -s $(makefile_dir)/src/git-ignore.completion.sh $(autocomplete_dir)/git-ignore
 
 
 # Uninstall the git command (undoes both install and dev-install targets).
@@ -27,3 +30,4 @@ dev-install:
 uninstall:
 	rm $(install_script_dir)/git-ignore
 	rm $(install_man_dir)/git-ignore.1
+	-rm $(autocomplete_dir)/git-ignore
