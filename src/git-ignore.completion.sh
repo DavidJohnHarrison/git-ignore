@@ -47,7 +47,7 @@ _git_ignore_filter_type_list() {
 
 
 
-# ==== AUTOCOMPLATE ============================================================
+# ==== AUTOCOMPLETE ============================================================
 _git_ignore() {
     #echo "${COMP_WORDS[-1]}"
     _input="${COMP_WORDS[$COMP_CWORD]}"

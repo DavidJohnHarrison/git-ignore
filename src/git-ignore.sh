@@ -31,7 +31,6 @@ check_if_valid_type() {
 
 
 get_url_from_types() {
-    echo "$@"
     _type_list=$(printf '%s,' "$@")
 
     # Cut off the trailing ','
@@ -42,7 +41,6 @@ get_url_from_types() {
 
 
 get_gitignore_file_from_url() {
-    echo "$1"
     if type "wget" > /dev/null; then
         _gitignore_file="`wget -qO- $1`"
     elif type "curl" > /dev/null; then
